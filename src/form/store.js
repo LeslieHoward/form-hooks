@@ -1,17 +1,17 @@
 import { BehaviorSubject } from 'rxjs';
-// import { share } from 'rxjs/operators';
 import _ from 'lodash';
+import actions from './actions';
 
 export default class Store {
-  constructor(inits) {
+  constructor(initialValues = {}) {
     // 各个字段的数据
-    this.data = {};
-    this.broadcast$ = new BehaviorSubject(inits);
+    this.data = { ...initialValues };
+    this.broadcast$ = new BehaviorSubject({ type: actions.onFormInit });
   }
   setData = data => {
     this.data = { ...data };
     console.log('设置数据...');
-    this.broadcast$.next({ type: 'data' });
+    this.broadcast$.next({ type: actions.onFormDataChange });
   };
   getData = () => {
     return { ...this.data };

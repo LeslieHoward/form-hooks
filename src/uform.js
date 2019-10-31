@@ -32,7 +32,7 @@ function Name(props) {
 }
 
 function Money(props) {
-  const { value = '', visible, dispatchVisible, errors = [], ...restProps } = props;
+  const { value = '', visible, dispatchVisible, ...restProps } = props;
   console.log('props', props);
   if (visible === false) {
     return null;

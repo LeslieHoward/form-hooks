@@ -1,8 +1,7 @@
 import React from 'react';
 import { isObservable, BehaviorSubject } from 'rxjs';
 import Store from './store';
-import { useBehaviorSubject } from './observer';
-import { useMount } from './hooks';
+import { useMount, useUpdate } from './hooks';
 // import { unsubscribe } from './utils';
 
 const FormContext = React.createContext({});
@@ -14,7 +13,7 @@ export default function Form(props) {
     // eslint-disable-next-line
     []
   );
-  React.useEffect(() => {
+  useUpdate(() => {
     store.setData(data);
     // eslint-disable-next-line
   }, [data]);
@@ -26,11 +25,11 @@ export function useStore() {
   return store;
 }
 
-export function useField(name, options = {}) {
+export function useField(name, opts = {}) {
   const { store } = React.useContext(FormContext);
-  const optsRef = React.useRef(options);
+  const [options, updateOptions] = React.useState(opts);
 
-  const { defaultValue } = optsRef.current;
+  const { defaultValue } = options;
   const [value, setValue] = React.useState(defaultValue);
   const inputs$ = React.useMemo(
     () => new BehaviorSubject(defaultValue),
@@ -68,26 +67,5 @@ export function useField(name, options = {}) {
     });
   });
 
-  return { value, update };
-}
-
-export function useMirror(name, inputFactory) {
-  const { formId } = React.useContext(FormContext);
-  const mirror$ = useBehaviorSubject(`${formId}-${name}`);
-  const inputFactoryRef = React.useRef(inputFactory);
-  const [value, setValue] = React.useState();
-
-  React.useEffect(() => {
-    if (typeof inputFactoryRef.current === 'function') {
-      inputFactoryRef.current(mirror$).subscribe(value => {
-        setValue(value);
-      });
-    } else {
-      mirror$.subscribe(value => {
-        setValue(value);
-      });
-    }
-  }, [mirror$]);
-
-  return { value };
+  return { value, update, updateOptions };
 }

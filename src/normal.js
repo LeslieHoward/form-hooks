@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 import Form, { useField, useStore } from './form/form';
 
 import './styles.css';
@@ -28,11 +27,10 @@ export default function Normal() {
   const addData = () => {
     setData({ calculate: Math.random() });
   };
-  const props = _.isEmpty(data) ? {} : { data };
   return (
     <>
       <div style={{ padding: 20, border: '1px solid red' }}>
-        <Form {...props}>
+        <Form data={data}>
           <button onClick={addData}>添加数据</button>
           <A />
           <Submit />

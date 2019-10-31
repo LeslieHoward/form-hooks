@@ -8,3 +8,15 @@ export function useMount(effect) {
     }
   }, []);
 }
+
+export function useUpdate(effect, deps) {
+  const effectRef = React.useRef(effect);
+  const isInitialRef = React.useRef(true);
+  React.useEffect(() => {
+    if (isInitialRef.current) {
+      isInitialRef.current = false;
+      return;
+    }
+    effectRef.current();
+  }, [deps]);
+}
