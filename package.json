@@ -8,7 +8,7 @@
     "@uform/core": "^0.4.3",
     "@uform/react": "^0.4.3",
     "immer": "^4.0.2",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "moment": "^2.24.0",
     "nanoid": "^2.1.6",
     "queue-evt": "0.2.1",
