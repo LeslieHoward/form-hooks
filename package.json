@@ -1,24 +1,22 @@
 {
-  "name": "new",
+  "name": "react-hooks",
   "version": "1.0.0",
-  "description": "",
-  "keywords": [],
+  "description": "a react-hooks collection",
+  "keywords": [
+    "form",
+    "react",
+    "react hooks"
+  ],
   "main": "src/index.js",
   "dependencies": {
-    "@uform/core": "^0.4.3",
-    "@uform/react": "^0.4.3",
-    "immer": "^4.0.2",
-    "lodash": "4.17.15",
-    "moment": "^2.24.0",
-    "nanoid": "^2.1.6",
-    "queue-evt": "0.2.1",
-    "react": "16.11.0",
-    "react-dom": "16.11.0",
-    "react-is": "16.11.0",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
-    "rxjs": "^6.5.3",
-    "rxjs-hooks": "^0.5.1"
+    "immer": "^7.0.7",
+    "lodash": "4.17.19",
+    "nanoid": "^2.1.11",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "rxjs": "^6.6.2"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
@@ -29,7 +27,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
-    "typescript": "3.6.3"
+    "typescript": "3.9.7"
   },
   "scripts": {
     "start": "react-scripts start",
